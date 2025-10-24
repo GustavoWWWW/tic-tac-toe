@@ -4,7 +4,7 @@ class TicTacToe:
         self.current_player = 'X'
 
     def print_board(self):
-        """Функция печати поля"""
+        """функция печати поля"""
         print("\n   | 0 | 1 | 2 |")
         print("----------------")
         for i, row in enumerate(self.board):
@@ -12,25 +12,25 @@ class TicTacToe:
             print("----------------")
 
     def make_move(self, row, col):
-        """Функция выполнения хода"""
+        """функция выыполнения хода"""
         if self.board[row][col] == ' ':
             self.board[row][col] = self.current_player
             return True
         return False
 
     def check_winner(self):
-        """Функция проверки победителя"""
-        # Проверка строк
+        """функция проверки победителя"""
+        # ароверка строк
         for row in self.board:
             if row[0] == row[1] == row[2] != ' ':
                 return row[0]
 
-        # Проверка столбцов
+        # проверка столбцов
         for col in range(3):
             if self.board[0][col] == self.board[1][col] == self.board[2][col] != ' ':
                 return self.board[0][col]
 
-        # Проверка диагоналей
+        # проверка диагоналеи
         if self.board[0][0] == self.board[1][1] == self.board[2][2] != ' ':
             return self.board[0][0]
         if self.board[0][2] == self.board[1][1] == self.board[2][0] != ' ':
@@ -39,21 +39,21 @@ class TicTacToe:
         return None
 
     def is_board_full(self):
-        """Проверка на ничью"""
+        """проверка на ничью"""
         for row in self.board:
             if ' ' in row:
                 return False
         return True
 
     def play_game(self):
-        """Основной игровой цикл"""
+        """основа игрового цикла"""
         print("Добро пожаловать в Крестики-нолики!")
         print("Вводите координаты в формате: строка столбец (например: 1 2)")
 
         while True:
             self.print_board()
 
-            # Получаем ход от игрока
+            # получаем ход от игрока
             try:
                 move = input(f"Игрок {self.current_player}, ваш ход: ").split()
                 if len(move) != 2:
@@ -74,7 +74,7 @@ class TicTacToe:
                 print("Введите числа от 0 до 2!")
                 continue
 
-            # Проверяем условия окончания игры
+            # проверрка условия окончания игры
             winner = self.check_winner()
             if winner:
                 self.print_board()
@@ -86,11 +86,11 @@ class TicTacToe:
                 print("🤝 Ничья!")
                 break
 
-            # Смена игрока
+            # смена игрока
             self.current_player = 'O' if self.current_player == 'X' else 'X'
 
 
-# Запуск игры
+# запуск игры
 if __name__ == "__main__":
     game = TicTacToe()
     game.play_game()
